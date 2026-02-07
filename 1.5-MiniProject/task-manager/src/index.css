@@ -1,0 +1,17 @@
+.Form{
+  background-color: bisque;
+  border: 3px solid darkorange;
+  text-align: center;
+  width: 450px;
+}
+
+.TaskBlock {
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+.TaskBlock.done {
+  background-color: #d1fae5;
+  border-color: #10b981;
+}
