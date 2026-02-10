@@ -1,6 +1,6 @@
 import Header from "./components/Header.jsx";
 import { useState } from "react";
-import Results from "./components/Results.jsx"
+import Results from "./components/Results.jsx";
 import UserInput from "./components/UserInput.jsx";
 function App() {
   const [userInput, setUserInput] = useState({
@@ -10,11 +10,12 @@ function App() {
     duration: 10,
   });
 
+  const inputIsValid = userInput.duration >= 1;
   function handleChange(inputIdentifier, newValue) {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
-        [inputIdentifier]: +newValue, 
+        [inputIdentifier]: +newValue,
       };
     });
   }
@@ -22,8 +23,9 @@ function App() {
   return (
     <>
       <Header></Header>
-      <UserInput userInput = {userInput} onChange={handleChange} />
-      <Results input = {userInput}></Results>
+      <UserInput userInput={userInput} onChange={handleChange} />
+      {!inputIsValid && <p className="center">Please input valid values</p>}
+      {inputIsValid && <Results input={userInput}></Results>}
     </>
   );
 }
