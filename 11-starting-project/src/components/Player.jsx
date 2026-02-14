@@ -7,6 +7,7 @@ export default function Player() {
 
   function handleChange(event)
   {
+   setSubmitted(false);
    setEnteredPlayerName(event.target.value);
   }
 
