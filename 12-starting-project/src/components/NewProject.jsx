@@ -3,7 +3,7 @@ import Input from "./Input.jsx";
 import Button from "./Button.jsx";
 import Modal from "./Modal.jsx";
 
-export default function NewProject({ onAdd }) {
+export default function NewProject({ onAdd,onCancel }) {
   const modal = useRef();
   const title = useRef();
   const description = useRef();
@@ -31,10 +31,12 @@ export default function NewProject({ onAdd }) {
   }
   return (
     <>
-    <Modal ref={modal} buttonCaption ="Close">
-      <h2>Invalid Input</h2>
-      <p>Oops...You forgot to add a value it seems </p>
-    </Modal>
+      <Modal ref={modal} buttonCaption="Close">
+        <h2 className="text-xl font-bold text-stone-500 my-4">Invalid Input</h2>
+        <p className="text-xl font-bold text-stone-500 my-4">
+          Oops...You forgot to add a value it seems{" "}
+        </p>
+      </Modal>
       <div className="w-[35rem] mt-16">
         <div>
           <Input ref={title} label="Title" />
@@ -43,7 +45,7 @@ export default function NewProject({ onAdd }) {
         </div>
         <menu className="flex items-center justify-end gap-4 my-4">
           <li>
-            <button className="text-stone-800 hover:text-stone-950">
+            <button className="text-stone-800 hover:text-stone-950" onClick={onCancel}>
               Cancel
             </button>
           </li>
