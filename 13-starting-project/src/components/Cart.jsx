@@ -39,3 +39,5 @@ export default function Cart({ items, onUpdateItemQuantity }) {
     </div>
   );
 }
+
+//Commit to check if the cart component is working as expected. The cart should display the items added to it, allow the user to update the quantity of each item, and show the total price of the items in the cart.
