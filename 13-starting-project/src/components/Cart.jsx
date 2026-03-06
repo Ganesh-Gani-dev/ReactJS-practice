@@ -1,21 +1,22 @@
-import { use } from "react";
+import { useContext } from "react";
 import { CartContext } from "../store/shopping-cart-context";
 
-
 export default function Cart({ items, onUpdateItemQuantity }) {
-  const cartCtx = use(CartContext);
-  const totalPrice = items.reduce(
+  const cartCtx = useContext(CartContext);
+  const cartItems = items ?? cartCtx.items;
+
+  const totalPrice = cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
-    0
+    0,
   );
   const formattedTotalPrice = `$${totalPrice.toFixed(2)}`;
 
   return (
     <div id="cart">
-      {cartCtx.items.length === 0 && <p>No items in cart!</p>}
-      {cartCtx.items.length > 0 && (
+      {cartItems.length === 0 && <p>No items in cart!</p>}
+      {cartItems.length > 0 && (
         <ul id="cart-items">
-          {cartCtx.items.map((item) => {
+          {cartItems.map((item) => {
             const formattedPrice = `$${item.price.toFixed(2)}`;
 
             return (
